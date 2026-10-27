@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo LocalStorage</title>
+</head>
+<body>
+    <input type="text" id="taskInput" placeholder="enter task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        const input = document.getElementById("taskInput");
+        const listEl = document.getElementById("taskList");
+
+        function renderTasks(){
+            listEl.innerHTML = "";
+            let tasks = JSON.parse(localStorage.getItem("mytodos")) || [];
+            tasks.forEach(function(item){
+                let li = document.createElement("li");
+                li.textContent = item;
+                listEl.appendChild(li);
+            })
+        }
+
+        function addTask(){
+            let val = input.value.trim();
+            if(!val) return;
+
+            let tasks = JSON.parse(localStorage.getItem("mytodos")) || [];
+            tasks.push(val);
+            localStorage.setItem("mytodos", JSON.stringify(tasks));
+            input.value="";
+            renderTasks();
+        }
+
+        renderTasks();
+    </script>
+</body>
+</html>

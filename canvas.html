@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Smiley</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="900" height="900"></canvas>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "#89e889";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+
+        ctx.beginPath();
+        ctx.arc(450,420,320,0,Math.PI*2);
+        ctx.fillStyle="#ffeb00";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(300,340,30,0,Math.PI*2);
+        ctx.fillStyle="black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(600,340,30,0,Math.PI*2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(450,430);
+        ctx.lineTo(450,540);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(450,480,160,0.2*Math.PI,0.8*Math.PI);
+        ctx.stroke();
+
+        ctx.textAlign = "center";
+        ctx.font="bold 45px sans-serif";
+        ctx.fillStyle="#007000";
+        ctx.fillText("The Canvas brought me to life!", canvas.width / 2, 840);
+    </script>
+</body>
+</html>
